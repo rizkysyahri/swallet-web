@@ -1,113 +1,143 @@
+"use client";
+
+import * as React from "react";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+
+import { useCounterStore } from "@/stores/store";
+import { useRouter } from "next/navigation";
+import axiosInstance from "@/lib/axios";
+import {
+  TextRevealCard,
+  TextRevealCardDescription,
+  TextRevealCardTitle,
+} from "@/components/ui/text-reveal-card";
+import { CardStackDemo } from "@/components/CardStackDemo";
+import { WobbleCardDemo } from "@/components/WobbleCardDemo";
+import { LineChartHero } from "@/components/LineChart";
+import { BarChart2, Clock, Shield, SlidersVertical } from "lucide-react";
+import Footer from "@/components/Footer";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <>
+      <div className="bg-slate-50 grainy-light dark:bg-black dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative pb-24 sm:pb-32 lg:pb-52 ">
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+        <section>
+          <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
+            <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
+              <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start ">
+                <div>
+                  <Image src="/swallet.png" alt="swallet" className="w-80" />
+                </div>
+                <div className="mt-5">
+                  <h1 className="relative w-fit tracking-tight text-balance font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
+                    <span className="bg-sky-500 text-white px-2">
+                      Management
+                    </span>{" "}
+                    Pengeluaran Anda
+                  </h1>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-span-full lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20 h-fit ">
+              <div className="grid w-full max-w-sm items-center gap-1.5 p-5 rounded-lg relative">
+                <div className="">
+                  <CardStackDemo />
+                </div>
+              </div>
+            </div>
+          </MaxWidthWrapper>
+        </section>
+
+        <section>
+          <MaxWidthWrapper className="flex flex-col items-center justify-center pb-24 sm:pb-32 lg:pb-52">
+            <div>
+              <Image
+                src="/images/swallet-arrow.png"
+                alt="swallet"
+                className="w-32"
+              />
+            </div>
+            <div className="mt-4">
+              <h2 className="text-center font-bold  w-fit tracking-tight text-balance !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
+                Experience Next-Gen Web Apps—Where Innovation{" "}
+                <span className="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 inline-block text-transparent bg-clip-text">
+                  Meets Functionality
+                </span>
+              </h2>
+              <div className="my-20 flex items-center justify-center">
+                <p className="text-center text-gray-900 max-w-3xl text-md md:text-lg">
+                  Take control of your finances effortlessly with Swallet. Our
+                  user-friendly platform offers powerful tools to track, manage,
+                  and optimize your spending. Whether you&apos;re budgeting for
+                  personal use or managing business expenses, Swallet simplifies
+                  the process with intuitive features and insightful analytics.
+                </p>
+              </div>
+
+              <div className="mt-5 md:grid md:grid-cols-3 flex flex-col gap-6 md:gap-10">
+                <div className="flex gap-3">
+                  <div className="border-4 border-green-500 rounded-2xl w-10 h-10 p-2 flex items-center justify-center">
+                    <Clock className="w-5" />
+                  </div>
+                  <div className="flex flex-col">
+                    <h3 className="font-bold">Real-Time Expense Tracking</h3>
+                    <div className="flex">
+                      <p className="max-w-sm mt-4 text-gray-500">
+                        Stay updated with your spending patterns in real-time.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="border-4 border-green-500 rounded-2xl w-10 h-10 p-2 flex items-center justify-center">
+                    <SlidersVertical className="w-5" />
+                  </div>
+                  <div className="flex flex-col">
+                    <h3 className="font-bold">Customizable Budgets</h3>
+                    <div className="flex">
+                      <p className="max-w-sm mt-4 text-gray-500">
+                        Set and adjust budgets to fit your financial goals.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="border-4 border-green-500 rounded-2xl w-10 h-10 p-2 flex items-center justify-center">
+                    <BarChart2 className="w-5" />
+                  </div>
+                  <div className="flex flex-col">
+                    <h3 className="font-bold">Visual Insights</h3>
+                    <div className="flex">
+                      <p className="max-w-sm mt-4 text-gray-500">
+                        Understand your financial health with detailed charts
+                        and reports.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </MaxWidthWrapper>
+        </section>
+
+        <section>
+          <MaxWidthWrapper className="flex flex-col">
+            <div>
+              <h2 className="text-3xl font-bold">
+                Simple to manage your wallet
+              </h2>
+            </div>
+            <div className="mt-8">
+              <WobbleCardDemo />
+            </div>
+          </MaxWidthWrapper>
+        </section>
       </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      <Footer />
+    </>
   );
 }
