@@ -39,7 +39,7 @@ const CARDS = [
     content: (
       <p>
         The Swallet App is a game-changer for managing expenses.{" "}
-        <Highlight>I've incorporated its features</Highlight> into my projects,
+        <Highlight>I&apos;ve incorporated its features</Highlight> into my projects,
         and the experience has been phenomenal. The user interface is intuitive,
         and the functionality is robust.
       </p>
