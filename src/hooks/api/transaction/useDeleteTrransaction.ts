@@ -1,5 +1,5 @@
 import axiosInstance from "@/lib/axios";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const useTransaction = () => {

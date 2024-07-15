@@ -1,5 +1,5 @@
 import axiosInstance from "@/lib/axios";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import { useQuery } from "@tanstack/react-query";
 import { AreaChart } from "@tremor/react";
 

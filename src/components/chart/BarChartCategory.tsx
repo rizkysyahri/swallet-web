@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -18,33 +18,43 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { category: "makanan", visitors: 19, fill: "var(--color-makanan)" },
+  { category: "belanja", visitors: 12, fill: "var(--color-belanja)" },
+  { category: "hiburan", visitors: 0, fill: "var(--color-hiburan)" },
+  { category: "transportasi", visitors: 0, fill: "var(--color-transportasi)" },
 ]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  visitors: {
+    label: "Visitors",
+  },
+  makanan: {
+    label: "Makanan",
     color: "hsl(var(--chart-1))",
   },
-  mobile: {
-    label: "Mobile",
+  belanja: {
+    label: "Belanja",
     color: "hsl(var(--chart-2))",
   },
-  label: {
-    color: "hsl(var(--background))",
+  hiburan: {
+    label: "Hiburan",
+    color: "hsl(var(--chart-3))",
+  },
+  transportasi: {
+    label: "Transportasi",
+    color: "hsl(var(--chart-4))",
+  },
+  other: {
+    label: "Other",
+    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig
 
 export function BarChartCategory() {
   return (
-    <Card>
+    <Card className="w-[500px]">
       <CardHeader>
-        <CardTitle>Category</CardTitle>
+        <CardTitle>Bar Chart - Mixed</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -54,45 +64,25 @@ export function BarChartCategory() {
             data={chartData}
             layout="vertical"
             margin={{
-              right: 16,
+              left: 0,
             }}
           >
-            <CartesianGrid horizontal={false} />
             <YAxis
-              dataKey="month"
+              dataKey="category"
               type="category"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
-              hide
+              tickFormatter={(value) =>
+                chartConfig[value as keyof typeof chartConfig]?.label
+              }
             />
-            <XAxis dataKey="desktop" type="number" hide />
+            <XAxis dataKey="visitors" type="number" hide />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              content={<ChartTooltipContent hideLabel />}
             />
-            <Bar
-              dataKey="desktop"
-              layout="vertical"
-              fill="var(--color-desktop)"
-              radius={4}
-            >
-              <LabelList
-                dataKey="month"
-                position="insideLeft"
-                offset={8}
-                className="fill-[--color-label]"
-                fontSize={12}
-              />
-              <LabelList
-                dataKey="desktop"
-                position="right"
-                offset={8}
-                className="fill-foreground"
-                fontSize={12}
-              />
-            </Bar>
+            <Bar dataKey="visitors" layout="vertical" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>

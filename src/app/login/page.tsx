@@ -20,7 +20,7 @@ const Login = () => {
         <div className="flex flex-col mb-10">
           <div className="flex items-center justify-center">
             <Link href="/">
-              <Image src="/swallet.png" alt="swallet" className="w-40" />
+              <Image src="/swallet.png" alt="swallet" width={160} height={160} />
             </Link>
           </div>
           <h1 className="mt-5 text-2xl">Hi You 🫵, Welcome!</h1>

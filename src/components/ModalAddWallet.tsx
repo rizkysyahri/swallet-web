@@ -14,7 +14,7 @@ import { Button } from "./ui/button";
 import { IPostWallet, IWallet } from "@/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 
 const ModalAddWallet = () => {
   const token = useCounterStore((state) => state.token);

@@ -1,6 +1,6 @@
 import { useToast } from "@/components/ui/use-toast";
 import axiosInstance from "@/lib/axios";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import { IProfileUpdate } from "@/types/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import * as React from "react";

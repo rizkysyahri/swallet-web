@@ -2,18 +2,8 @@
 
 import * as React from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-
-import { useCounterStore } from "@/stores/store";
-import { useRouter } from "next/navigation";
-import axiosInstance from "@/lib/axios";
-import {
-  TextRevealCard,
-  TextRevealCardDescription,
-  TextRevealCardTitle,
-} from "@/components/ui/text-reveal-card";
 import { CardStackDemo } from "@/components/CardStackDemo";
 import { WobbleCardDemo } from "@/components/WobbleCardDemo";
-import { LineChartHero } from "@/components/LineChart";
 import { BarChart2, Clock, Shield, SlidersVertical } from "lucide-react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -22,13 +12,13 @@ export default function Home() {
   return (
     <>
       <div className="bg-slate-50 grainy-light dark:bg-black dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative pb-24 sm:pb-32 lg:pb-52 ">
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black)]"></div>
         <section>
           <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
             <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
               <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start ">
                 <div>
-                  <Image src="/swallet.png" alt="swallet" className="w-80" />
+                  <Image src="/swallet.png" alt="swallet" width={320} height={320}/>
                 </div>
                 <div className="mt-5">
                   <h1 className="relative w-fit tracking-tight text-balance font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
@@ -57,7 +47,9 @@ export default function Home() {
               <Image
                 src="/images/swallet-arrow.png"
                 alt="swallet"
-                className="w-32"
+                
+                width={128}
+                height={128}
               />
             </div>
             <div className="mt-4">

@@ -18,7 +18,7 @@ import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
 import { useParams } from "next/navigation";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import { IWalletDetail } from "@/types/types";
 
 export const description = "An interactive bar chart";
@@ -100,7 +100,7 @@ export function Recharts() {
   );
 
   return (
-    <Card>
+    <Card className="w-[500px]">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
           <CardTitle>

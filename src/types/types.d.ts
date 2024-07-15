@@ -23,6 +23,11 @@ export type IPostWallet = {
   beginning_balance: number;
 };
 
+export type SaveConfigWallet = {
+  walletName?: string;
+  beginning_balance?: number;
+}
+
 export type IWallet = {
   id: string;
   walletName: string;

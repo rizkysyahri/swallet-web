@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import { usePathname, useRouter } from "next/navigation";
 import axiosInstance from "@/lib/axios";
 import { buttonVariants } from "./ui/button";
@@ -57,13 +57,13 @@ const Navbar = () => {
             {user ? (
               <>
                 <Link href="/dashboard">
-                  <Image src="/swallet.png" alt="swallet" className="w-20" />
+                  <Image src="/swallet.png" alt="swallet" width={80} height={80}/>
                 </Link>
               </>
             ) : (
               <>
                 <div>
-                  <Image src="/swallet.png" alt="swallet" className="w-20" />
+                  <Image src="/swallet.png" alt="swallet" width={80} height={80}  />
                 </div>
               </>
             )}

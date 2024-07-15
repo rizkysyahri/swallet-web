@@ -35,12 +35,12 @@ const Page = () => {
   });
 
   return (
-    <section className="bg-slate-50">
+    <section className="bg-slate-50 pb-24">
       <MaxWidthWrapper className="pt-14">
         <div className="">
           <Recharts />
         </div>
-        <div>
+        <div className="pt-14">
           <BarChartCategory />
         </div>
       </MaxWidthWrapper>

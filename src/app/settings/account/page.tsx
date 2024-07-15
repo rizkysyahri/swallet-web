@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import useEditProfile from "@/hooks/api/profile/useEditProfile";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import Image from "next/image";
 
 const Account = () => {
@@ -37,7 +37,12 @@ const Account = () => {
     }, 100);
 
     return () => clearTimeout(timeout);
-  }, [formProfile.username, formProfile.gender, formProfile.avatar, setIsDirty]);
+  }, [
+    formProfile.username,
+    formProfile.gender,
+    formProfile.avatar,
+    setIsDirty,
+  ]);
 
   const handleIconClick = () => {
     if (inputRef.current) {
@@ -53,7 +58,9 @@ const Account = () => {
             <Image
               src="https://github.com/shadcn.png"
               alt="shadcn"
-              className=" absolute z-10 w-44 h-44 rounded-2xl"
+              className=" absolute z-10 rounded-2xl"
+              width={176}
+              height={176}
             />
           </div>
           <div className="flex flex-col md:flex-row gap-3">

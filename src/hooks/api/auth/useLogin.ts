@@ -1,5 +1,5 @@
 import axiosInstance from "@/lib/axios";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import { ILoginAuth, IProfile } from "@/types/types";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";

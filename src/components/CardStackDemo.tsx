@@ -38,35 +38,33 @@ const CARDS = [
     designation: "Senior Software Engineer",
     content: (
       <p>
-        These cards are amazing, <Highlight>I want to use them</Highlight> in my
-        project. Framer motion is a godsend ngl tbh fam 🙏
+        The Swallet App is a game-changer for managing expenses.{" "}
+        <Highlight>I've incorporated its features</Highlight> into my projects,
+        and the experience has been phenomenal. The user interface is intuitive,
+        and the functionality is robust.
       </p>
     ),
   },
   {
     id: 1,
-    name: "Elon Musk",
-    designation: "Senior Shitposter",
+    name: "Marie Curie",
+    designation: "Pioneer in Radioactivity",
     content: (
       <p>
-        I dont like this Twitter thing,{" "}
-        <Highlight>deleting it right away</Highlight> because yolo. Instead, I
-        would like to call it <Highlight>X.com</Highlight> so that it can easily
-        be confused with adult sites.
+        Swallet App is truly revolutionary for anyone looking to manage their
+        finances effectively. <Highlight>I highly recommend</Highlight> using
+        this app to track and control your expenses seamlessly.
       </p>
     ),
   },
   {
     id: 2,
-    name: "Tyler Durden",
-    designation: "Manager Project Mayhem",
+    name: "Steve Jobs",
+    designation: "Visionary Innovator",
     content: (
       <p>
-        The first rule of
-        <Highlight>Fight Club</Highlight> is that you do not talk about fight
-        club. The second rule of
-        <Highlight>Fight club</Highlight> is that you DO NOT TALK about fight
-        club.
+        Simplicity and elegance are key, and the Swallet App{" "}
+        <Highlight>embodies these principles</Highlight> perfectly.
       </p>
     ),
   },

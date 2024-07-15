@@ -2,7 +2,7 @@ import * as React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ICategory, ITransactionUpdate } from "@/types/types";
 import axiosInstance from "@/lib/axios";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import { useToast } from "@/components/ui/use-toast";
 
 interface IFormTransaction extends Omit<ITransactionUpdate, "id"> {

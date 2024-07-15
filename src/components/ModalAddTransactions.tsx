@@ -20,7 +20,7 @@ import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { ICategory, IPostTransaction } from "@/types/types";
-import { useCounterStore } from "@/stores/store";
+import { useCounterStore } from "@/stores/zustand/store";
 import { useParams } from "next/navigation";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
@@ -168,7 +168,7 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
 
             <div className="flex items-center justify-between pt-5">
               <div className="border-b border-gray-900">
-                <Image src="/swallet.png" alt="swallet" className="w-20" />
+                <Image src="/swallet.png" alt="swallet" width={80} height={80} />
               </div>
               <div>
                 <DialogClose asChild>
