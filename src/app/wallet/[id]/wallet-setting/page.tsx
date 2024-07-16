@@ -56,7 +56,7 @@ const Page = () => {
         beginning_balance: walletSetting.beginning_balance || 0,
       });
     }
-  }, [walletSetting]);
+  }, [walletSetting, setFormWallet]);
 
   return (
     <section>
