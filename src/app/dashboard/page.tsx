@@ -1,7 +1,7 @@
 "use client";
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import ModalAddWallet from "@/components/ModalAddWallet";
+import ModalAddWallet from "@/components/modal/modalWallet/ModalAddWallet";
 import {
   Card,
   CardContent,
@@ -14,7 +14,7 @@ import { formatPrice } from "@/lib/utils";
 import { useCounterStore } from "@/stores/zustand/store";
 import { IWalletDetail } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
-import { Wallet } from "lucide-react";
+import { MessageSquareWarning, Wallet } from "lucide-react";
 import Link from "next/link";
 import { FC } from "react";
 

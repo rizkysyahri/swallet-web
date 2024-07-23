@@ -4,6 +4,8 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/toaster";
+import { MessageSquareWarning } from "lucide-react";
+import AllertButton from "@/components/AllertButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +28,7 @@ export default function RootLayout({
           <main className="flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)]">
             <div className="flex flex-1 flex-col h-full">
               <Providers>{children}</Providers>
+              <AllertButton />
             </div>
           </main>
           <Toaster />

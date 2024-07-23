@@ -1,7 +1,7 @@
 "use client";
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import ModalDeleteWallet from "@/components/modal/ModalDeleteWallet";
+import ModalDeleteWallet from "@/components/modal/modalWallet/ModalDeleteWallet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
