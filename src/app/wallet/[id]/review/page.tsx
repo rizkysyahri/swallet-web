@@ -40,9 +40,6 @@ const Page = () => {
         <div className="">
           <Recharts />
         </div>
-        <div className="pt-14">
-          <BarChartCategory />
-        </div>
       </MaxWidthWrapper>
     </section>
   );

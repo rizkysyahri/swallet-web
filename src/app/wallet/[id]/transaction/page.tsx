@@ -23,7 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
 import { IWalletDetail } from "@/types/types";
-import ModalAddTransactions from "@/components/ModalAddTransactions";
+import ModalAddTransactions from "@/components/modal/modalTransaction/ModalAddTransactions";
 import { formatDate, formatPrice } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
 import useTransaction from "@/hooks/api/transaction/useDeleteTrransaction";
@@ -38,7 +38,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import useUpdateTransaction from "@/hooks/api/transaction/useUpdateTransaction";
-import ModalDeleteTransaction from "@/components/modal/ModalDeleteTransaction";
+import ModalDeleteTransaction from "@/components/modal/modalTransaction/ModalDeleteTransaction";
 import Image from "next/image";
 
 const Transactions = () => {
@@ -311,6 +311,8 @@ const Transactions = () => {
                             src="/swallet.png"
                             alt="swallet"
                             className="w-20"
+                            width={500}
+                            height={500}
                           />
                         </div>
                         <div className="flex items-center gap-4">

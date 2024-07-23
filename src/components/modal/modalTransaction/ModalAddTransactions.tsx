@@ -15,16 +15,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Plus } from "lucide-react";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+import { Label } from "../../ui/label";
+import { Input } from "../../ui/input";
+import { Badge } from "../../ui/badge";
+import { Button } from "../../ui/button";
 import { ICategory, IPostTransaction } from "@/types/types";
 import { useCounterStore } from "@/stores/zustand/store";
 import { useParams } from "next/navigation";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
-import { useToast } from "./ui/use-toast";
+import { useToast } from "../../ui/use-toast";
 import Image from "next/image";
 
 interface ModalAddTransactionsProps {}
