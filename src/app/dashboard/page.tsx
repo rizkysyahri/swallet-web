@@ -52,8 +52,12 @@ const Dashboard: FC<DashboardProps> = ({}) => {
             <h1 className="font-bold text-2xl text-gray-600">Dompet</h1>
             <div className="mt-5 flex flex-col sm:flex-row gap-5">
               {data.map((wallet) => (
-                <Link key={wallet.id} href={`/wallet/${wallet.id}/transaction`}>
-                  <Card className="w-full bg-[#ebfdef] border-none shadow-lg">
+                <Link
+                  key={wallet.id}
+                  href={`/wallet/${wallet.id}/transaction`}
+                  className="bg-black rounded-2xl"
+                >
+                  <Card className="w-full bg-[#ebfdef] border-2 border-black translate-x-0 translate-y-0 hover:-translate-x-1 hover:-translate-y-1 transition duration-200">
                     <CardHeader>
                       <div className="flex gap-3">
                         <Wallet className="w-10 h-10" />

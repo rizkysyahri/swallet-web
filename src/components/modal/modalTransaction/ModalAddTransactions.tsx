@@ -21,18 +21,18 @@ import { Badge } from "../../ui/badge";
 import { Button } from "../../ui/button";
 import { ICategory, IPostTransaction } from "@/types/types";
 import { useCounterStore } from "@/stores/zustand/store";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
 import { useToast } from "../../ui/use-toast";
 import Image from "next/image";
+import useWallet from "@/hooks/api/wallet/useWallet";
 
 interface ModalAddTransactionsProps {}
 
 const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
   const params = useParams();
   const queryClient = useQueryClient();
-  const { toast } = useToast();
   const token = useCounterStore((state) => state.token);
   const [input, setInput] = React.useState<IPostTransaction>({
     walletId: params.id,
@@ -40,11 +40,19 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
     label: "",
     amount: -0,
   });
+  const { wallet } = useWallet();
+
+  const { toast } = useToast();
+  const router = useRouter();
 
   const { data: categories } = useQuery<ICategory[]>({
     queryKey: ["categories"],
     queryFn: async () => {
-      const response = await axiosInstance.get("/category");
+      const response = await axiosInstance.get("/category", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return response.data;
     },
   });
@@ -118,9 +126,11 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
   return (
     <>
       <Dialog>
-        <DialogTrigger className="flex gap-2 items-center  bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 rounded-md px-3">
-          <Plus className="w-5 h-5" />
-          Tambah transaksi
+        <DialogTrigger className="bg-white border-2 border-black">
+          <div className="flex gap-2 items-center bg-primary -translate-x-1 -translate-y-1 text-primary-foreground hover:bg-primary/90 hover:translate-x-0 hover:translate-y-0 h-9  px-3 transition duration-200">
+            <Plus className="w-5 h-5" />
+            Tambah transaksi
+          </div>
         </DialogTrigger>
         <DialogContent className="max-w-2xl mx-auto">
           <DialogTitle>Tambah transaksi</DialogTitle>
@@ -138,6 +148,18 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
                         {category.name}
                       </SelectItem>
                     ))}
+
+                    <div
+                      className="flex items-center gap-1 text-sm p-1 cursor-pointer  hover:bg-zinc-100 rounded-md"
+                      onClick={() =>
+                        router.push(
+                          `/wallet/${wallet?.id}/wallet-setting/categories`
+                        )
+                      }
+                    >
+                      <Plus className="w-4 h-4" />
+                      Tambah kategori
+                    </div>
                   </SelectContent>
                 </Select>
               </div>
@@ -168,16 +190,24 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
 
             <div className="flex items-center justify-between pt-5">
               <div className="border-b border-gray-900">
-                <Image src="/swallet.png" alt="swallet" width={80} height={80} />
+                <Image
+                  src="/swallet.png"
+                  alt="swallet"
+                  width={80}
+                  height={80}
+                />
               </div>
               <div>
                 <DialogClose asChild>
-                  <Button
-                    variant="secondary"
-                    onClick={() => saveTransaction(input)}
-                  >
-                    Tambah transaksi
-                  </Button>
+                  <div className="bg-black rounded-md">
+                    <Button
+                      variant="secondary"
+                      onClick={() => saveTransaction(input)}
+                      className="border-2 border-black -translate-x-1 -translate-y-1 hover:translate-x-0 hover:translate-y-0 transition duration-200"
+                    >
+                      Tambah transaksi
+                    </Button>
+                  </div>
                 </DialogClose>
               </div>
             </div>

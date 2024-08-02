@@ -13,7 +13,7 @@ import { useCounterStore } from "@/stores/zustand/store";
 import { IWalletDetail } from "@/types/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { DollarSign, Wallet } from "lucide-react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
@@ -26,6 +26,7 @@ const Page = () => {
     setFormWallet,
   } = useUpdateWallet(params.id as string);
   const { deleteWallet } = useDeleteWallet(params.id as string);
+  const router = useRouter();
 
   const { data: walletSetting } = useQuery<IWalletDetail>({
     queryKey: ["wallet"],
@@ -59,11 +60,23 @@ const Page = () => {
   }, [walletSetting, setFormWallet]);
 
   return (
-    <section>
-      <MaxWidthWrapper className="pt-14 lg:grid lg:grid-cols-3 lg:gap-x-0 xl:gap-x-8">
+    <section className="pt-14">
+      <MaxWidthWrapper className=" lg:grid lg:grid-cols-3 lg:gap-x-0 xl:gap-x-8">
         <div className="col-span-2 px-6 lg:px-0 lg:pt-4 ">
           <div className="relative mx-auto flex flex-col">
-            <h1 className="text-gray-600 text-2xl font-bold">
+            <div className="bg-black rounded-md w-[167px] ">
+              <Button
+                variant="neu"
+                onClick={() =>
+                  router.push(
+                    `/wallet/${walletSetting?.id}/wallet-setting/categories`
+                  )
+                }
+              >
+                Pengaturan Kategori
+              </Button>
+            </div>
+            <h1 className="text-gray-600 text-2xl font-bold pt-10">
               Pengaturan utama
             </h1>
 
@@ -91,14 +104,19 @@ const Page = () => {
           </div>
 
           <div className="pt-5">
-            <Button onClick={() => saveUpdateWallet(formWallet)}>
-              Perbarui pengaturan
-            </Button>
+            <div className="bg-white rounded-lg w-[170px] border-2 border-black">
+              <Button
+                onClick={() => saveUpdateWallet(formWallet)}
+                variant="neuWhite"
+              >
+                Perbarui pengaturan
+              </Button>
+            </div>
           </div>
-          <div className="border-b text-gray-900 my-5 w-full" />
+          <div className="border-b-2 border-gray-900 my-5 w-full" />
 
           <div className="flex justify-end">
-            <ModalDeleteWallet onClick={() => deleteWallet()}/>
+            <ModalDeleteWallet onClick={() => deleteWallet()} />
           </div>
         </div>
       </MaxWidthWrapper>
