@@ -28,6 +28,7 @@ import { useToast } from "../../ui/use-toast";
 import Image from "next/image";
 import useWallet from "@/hooks/api/wallet/useWallet";
 
+
 interface ModalAddTransactionsProps {}
 
 const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
@@ -148,7 +149,6 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
                         {category.name}
                       </SelectItem>
                     ))}
-
                     <div
                       className="flex items-center gap-1 text-sm p-1 cursor-pointer  hover:bg-zinc-100 rounded-md"
                       onClick={() =>
@@ -160,6 +160,7 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
                       <Plus className="w-4 h-4" />
                       Tambah kategori
                     </div>
+
                   </SelectContent>
                 </Select>
               </div>
@@ -208,6 +209,16 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
                       Tambah transaksi
                     </Button>
                   </div>
+                <Image src="/swallet.png" alt="swallet" width={80} height={80} />
+              </div>
+              <div>
+                <DialogClose asChild>
+                  <Button
+                    variant="secondary"
+                    onClick={() => saveTransaction(input)}
+                  >
+                    Tambah transaksi
+                  </Button>
                 </DialogClose>
               </div>
             </div>
