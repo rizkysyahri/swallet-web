@@ -209,6 +209,7 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
                       Tambah transaksi
                     </Button>
                   </div>
+                  </DialogClose>
                 <Image src="/swallet.png" alt="swallet" width={80} height={80} />
               </div>
               <div>

@@ -24,6 +24,7 @@ const AllertButton: FC<AllertButtonProps> = ({}) => {
           {" "}
           <MessageSquareWarning className="w-5 h-5" />
         </div>
+        </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Hi User</AlertDialogTitle>
