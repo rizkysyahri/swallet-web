@@ -148,7 +148,6 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
                         {category.name}
                       </SelectItem>
                     ))}
-
                     <div
                       className="flex items-center gap-1 text-sm p-1 cursor-pointer  hover:bg-zinc-100 rounded-md"
                       onClick={() =>
@@ -196,6 +195,20 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
                   width={80}
                   height={80}
                 />
+              </div>
+              <div>
+                <DialogClose asChild>
+                  <div className="bg-black rounded-md">
+                    <Button
+                      variant="secondary"
+                      onClick={() => saveTransaction(input)}
+                      className="border-2 border-black -translate-x-1 -translate-y-1 hover:translate-x-0 hover:translate-y-0 transition duration-200"
+                    >
+                      Tambah transaksi
+                    </Button>
+                  </div>
+                  </DialogClose>
+                <Image src="/swallet.png" alt="swallet" width={80} height={80} />
               </div>
               <div>
                 <DialogClose asChild>
