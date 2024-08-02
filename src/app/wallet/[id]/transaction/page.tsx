@@ -144,69 +144,75 @@ const Transactions = () => {
               </div>
             </div>
             <div className="pt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-7 md:gap-10">
-              <Card className="w-full ">
-                <CardHeader>
-                  <div className="flex gap-3">
-                    <div className="flex flex-col">
-                      <CardTitle>
-                        <div className="bg-teal-50 px-2 py-2 w-10 rounded-2xl">
-                          <WalletMinimal />
-                        </div>
-                        <span className="text-lg font-semibold text-gray-900">
-                          Saldo dompet
-                        </span>
-                      </CardTitle>
+              <div className="bg-[#6EACDA] w-full rounded-2xl ">
+                <Card className="border-2 border-black translate-x-0 translate-y-0 hover:-translate-x-2 hover:-translate-y-2 transition duration-200">
+                  <CardHeader>
+                    <div className="flex gap-3">
+                      <div className="flex flex-col">
+                        <CardTitle>
+                          <div className="bg-teal-50 px-2 py-2 w-10 rounded-2xl">
+                            <WalletMinimal />
+                          </div>
+                          <span className="text-lg font-semibold text-gray-900">
+                            Saldo dompet
+                          </span>
+                        </CardTitle>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <span className="font-bold text-green-500 text-2xl">
-                    {formatPrice(transaction?.beginning_balance as number)}
-                  </span>
-                </CardContent>
-              </Card>
-              <Card className="w-full">
-                <CardHeader>
-                  <div className="flex gap-3">
-                    <div className="flex flex-col">
-                      <CardTitle>
-                        <div className="bg-rose-100 px-2 py-2 w-10 rounded-2xl">
-                          <CreditCard />
-                        </div>
-                        <span className="text-lg font-semibold text-gray-900">
-                          Saldo pengeluaran
-                        </span>
-                      </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <span className="font-bold text-green-500 text-2xl">
+                      {formatPrice(transaction?.beginning_balance as number)}
+                    </span>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="bg-[#FFB200] rounded-2xl w-full">
+                <Card className="border-2 border-black translate-x-0 translate-y-0 hover:-translate-x-2 hover:-translate-y-2 transition duration-200">
+                  <CardHeader>
+                    <div className="flex gap-3">
+                      <div className="flex flex-col">
+                        <CardTitle>
+                          <div className="bg-rose-100 px-2 py-2 w-10 rounded-2xl">
+                            <CreditCard />
+                          </div>
+                          <span className="text-lg font-semibold text-gray-900">
+                            Saldo pengeluaran
+                          </span>
+                        </CardTitle>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <span className="font-bold text-red-500 text-2xl">
-                    {formatPrice(currentBalance)}
-                  </span>
-                </CardContent>
-              </Card>
-              <Card className="w-full">
-                <CardHeader>
-                  <div className="flex gap-3">
-                    <div className="flex flex-col">
-                      <CardTitle>
-                        <div className="bg-rose-100 px-2 py-2 w-10 rounded-2xl">
-                          <CreditCard />
-                        </div>
-                        <span className="text-lg font-semibold text-gray-900">
-                          Saldo pengeluaran
-                        </span>
-                      </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <span className="font-bold text-red-500 text-2xl">
+                      {formatPrice(currentBalance)}
+                    </span>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="w-full bg-[#81A263] rounded-2xl">
+                <Card className="border-2 border-black translate-x-0 translate-y-0 hover:-translate-x-2 hover:-translate-y-2 transition duration-200">
+                  <CardHeader>
+                    <div className="flex gap-3">
+                      <div className="flex flex-col">
+                        <CardTitle>
+                          <div className="bg-rose-100 px-2 py-2 w-10 rounded-2xl">
+                            <CreditCard />
+                          </div>
+                          <span className="text-lg font-semibold text-gray-900">
+                            Saldo pengeluaran
+                          </span>
+                        </CardTitle>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <span className="font-bold text-red-500 text-2xl">
-                    {formatPrice(currentBalance)}
-                  </span>
-                </CardContent>
-              </Card>
+                  </CardHeader>
+                  <CardContent>
+                    <span className="font-bold text-red-500 text-2xl">
+                      {formatPrice(currentBalance)}
+                    </span>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
           <div className="pt-8">
@@ -226,32 +232,34 @@ const Transactions = () => {
                           handleCheckboxChange(transactions.id);
                         }}
                       />
-                      <Card className="mt-4 w-full">
-                        <CardHeader>
-                          <CardTitle className="flex w-full justify-between">
-                            <div>{formatDate(transactions.date)}</div>
-                            <div className="text-slate-500">
-                              {formatPrice(transactions.amount)}
+                      <div className="bg-black w-full mt-4 rounded-2xl">
+                        <Card className="border-2 border-black -translate-x-1 -translate-y-1 hover:translate-x-0 hover:translate-y-0 transition duration-200">
+                          <CardHeader>
+                            <CardTitle className="flex w-full justify-between">
+                              <div>{formatDate(transactions.date)}</div>
+                              <div className="text-slate-500">
+                                {formatPrice(transactions.amount)}
+                              </div>
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="flex items-center gap-3">
+                            <span className="flex gap-3">
+                              <Utensils /> {transactions.category.name}
+                            </span>
+                            <div className="flex items-center justify-center mx-auto">
+                              <Badge
+                                variant="secondary"
+                                className="text-sm text-slate-500"
+                              >
+                                {transactions.label}
+                              </Badge>
                             </div>
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex items-center gap-3">
-                          <span className="flex gap-3">
-                            <Utensils /> {transactions.category.name}
-                          </span>
-                          <div className="flex items-center justify-center mx-auto">
-                            <Badge
-                              variant="secondary"
-                              className="text-sm text-slate-500"
-                            >
-                              {transactions.label}
-                            </Badge>
-                          </div>
-                          <span className="ml-auto text-slate-500">
-                            {formatPrice(transactions.amount)}
-                          </span>
-                        </CardContent>
-                      </Card>
+                            <span className="ml-auto text-slate-500">
+                              {formatPrice(transactions.amount)}
+                            </span>
+                          </CardContent>
+                        </Card>
+                      </div>
                     </div>
                   </DialogTrigger>
                   <DialogContent className="max-w-2xl mx-auto">
@@ -317,15 +325,21 @@ const Transactions = () => {
                         </div>
                         <div className="flex items-center gap-4">
                           <DialogClose asChild>
-                            <Button
-                              variant="secondary"
-                              onClick={updateTransaction}
-                            >
-                              Simpan perubahan
-                            </Button>
+                            <div className="bg-black rounded-md">
+                              <Button
+                                variant="secondary"
+                                onClick={updateTransaction}
+                                className="border-2 border-black -translate-x-1 -translate-y-1 hover:translate-x-0 hover:translate-y-0 transition duration-200"
+                              >
+                                Simpan perubahan
+                              </Button>
+                            </div>
                           </DialogClose>
-                          <div>
-                            <Button variant="destructive">
+                          <div className="bg-black rounded-md">
+                            <Button
+                              variant="destructive"
+                              className="border-2 border-black -translate-x-1 -translate-y-1 hover:translate-x-0 hover:translate-y-0 transition duration-200"
+                            >
                               Hapus transaksi
                             </Button>
                           </div>

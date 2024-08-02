@@ -20,7 +20,12 @@ const Login = () => {
         <div className="flex flex-col mb-10">
           <div className="flex items-center justify-center">
             <Link href="/">
-              <Image src="/swallet.png" alt="swallet" width={160} height={160} />
+              <Image
+                src="/swallet.png"
+                alt="swallet"
+                width={160}
+                height={160}
+              />
             </Link>
           </div>
           <h1 className="mt-5 text-2xl">Hi You 🫵, Welcome!</h1>
@@ -49,9 +54,16 @@ const Login = () => {
               className="w-full"
             />
           </div>
-          <Button className="mt-5 w-full" type="submit" disabled={!isDirty}>
-            {isPending ? "Logging in ..." : "Login"}
-          </Button>
+          <div className="bg-black rounded-md mt-5">
+            <Button
+              className="w-full h-full"
+              variant="neu"
+              type="submit"
+              disabled={!isDirty}
+            >
+              {isPending ? "Logging in ..." : "Login"}
+            </Button>
+          </div>
           {isError && <p className="text-red-500 mt-2">Login Failed</p>}
           {isSuccess && (
             <p className="text-green-500 mt-2">Login Successfully</p>

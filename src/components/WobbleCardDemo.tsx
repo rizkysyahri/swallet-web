@@ -9,7 +9,7 @@ export function WobbleCardDemo() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
       <WobbleCard
-        containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]"
+        containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px] border-2 border-solid border-black"
         className=""
       >
         <div className="max-w-xs">
@@ -30,7 +30,7 @@ export function WobbleCardDemo() {
           className="absolute -right-10 lg:-right-[20%] sm:-right-2 grayscale filter -bottom-7 object-contain rounded-2xl"
         />
       </WobbleCard>
-      <WobbleCard containerClassName="col-span-1 min-h-[300px]">
+      <WobbleCard containerClassName="col-span-1 min-h-[300px] border-2 border-solid border-black">
         <h2 className="max-w-80 text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
           Take Control of Your Finances with Ease.
         </h2>
@@ -41,7 +41,7 @@ export function WobbleCardDemo() {
         </p>
       </WobbleCard>
 
-      <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
+      <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px] border-2 border-solid border-black">
         <div className="max-w-lg">
           <h2 className="max-w-sm md:max-w-lg  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
             Watch your expenses drop—effortlessly manage your budget with our
