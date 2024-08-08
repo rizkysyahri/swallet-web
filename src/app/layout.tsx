@@ -4,12 +4,8 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 import Navbar from "@/components/header/Navbar";
 import { Toaster } from "@/components/ui/toaster";
-import { MessageSquareWarning } from "lucide-react";
 import AllertButton from "@/components/AllertButton";
-<<<<<<< HEAD
-=======
 import Footer from "@/components/Footer";
->>>>>>> c944565ddc80204c88c1863567158b07dfc07041
 
 const inter = Inter({ subsets: ["latin"] });
 
