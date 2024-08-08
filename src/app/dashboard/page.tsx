@@ -23,7 +23,11 @@ interface DashboardProps {}
 const Dashboard: FC<DashboardProps> = ({}) => {
   const token = useCounterStore((state) => state.token);
 
-  const { data: dataWallet, isLoading } = useQuery<IWalletDetail[]>({
+  const {
+    data: dataWallet,
+    isLoading,
+    isError,
+  } = useQuery<IWalletDetail[]>({
     queryKey: ["wallet"],
     queryFn: async () => {
       const res = await axiosInstance.get("/wallet-settings", {
@@ -40,6 +44,10 @@ const Dashboard: FC<DashboardProps> = ({}) => {
     return <div>Loading...</div>;
   }
 
+  if (isError || !Array.isArray(dataWallet)) {
+    return <div>Error loading wallets</div>;
+  }
+
   return (
     <>
       <section className="bg-slate-50 grainy-light">
@@ -47,34 +55,31 @@ const Dashboard: FC<DashboardProps> = ({}) => {
           <div className="flex flex-col ">
             <h1 className="font-bold text-2xl text-gray-600">Dompet</h1>
             <div className="mt-5 flex flex-col sm:flex-row gap-5">
-              {dataWallet && dataWallet.length > 0 ? (
-                dataWallet.map((wallet) => (
-                  <Link
-                    key={wallet.id}
-                    href={`/wallet/${wallet.id}/transaction`}
-                    className="bg-black rounded-2xl"
-                  >
-                    <Card className="w-full bg-[#ebfdef] border-2 border-black translate-x-0 translate-y-0 hover:-translate-x-1 hover:-translate-y-1 transition duration-200">
-                      <CardHeader>
-                        <div className="flex gap-3">
-                          <Wallet className="w-10 h-10" />
-                          <div className="flex flex-col">
-                            <CardTitle>{wallet.walletName}</CardTitle>
-                            <CardDescription>Tunai</CardDescription>
-                          </div>
+              {dataWallet?.map((wallet) => (
+                <Link
+                  key={wallet.id}
+                  href={`/wallet/${wallet.id}/transaction`}
+                  className="bg-black rounded-2xl"
+                >
+                  <Card className="w-full bg-[#ebfdef] border-2 border-black translate-x-0 translate-y-0 hover:-translate-x-1 hover:-translate-y-1 transition duration-200">
+                    <CardHeader>
+                      <div className="flex gap-3">
+                        <Wallet className="w-10 h-10" />
+                        <div className="flex flex-col">
+                          <CardTitle>{wallet.walletName}</CardTitle>
+                          <CardDescription>Tunai</CardDescription>
                         </div>
-                      </CardHeader>
-                      <CardContent>
-                        <span className="font-bold text-green-500 text-3xl">
-                          + {formatPrice(wallet.beginning_balance)}
-                        </span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))
-              ) : (
-                <span>No wallet data available</span>
-              )}
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <span className="font-bold text-green-500 text-3xl">
+                        + {formatPrice(wallet.beginning_balance)}
+                      </span>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+
               <div>
                 <ModalAddWallet />
               </div>
