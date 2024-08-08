@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import * as React from "react";
 import {
@@ -18,6 +18,7 @@ import { IPostWallet, IWallet } from "@/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
 import { useCounterStore } from "@/stores/zustand/store";
+import { useToast } from "@/components/ui/use-toast";
 
 const ModalAddWallet = () => {
   const token = useCounterStore((state) => state.token);
@@ -26,6 +27,8 @@ const ModalAddWallet = () => {
     walletName: "",
     beginning_balance: 0,
   });
+
+  const { toast } = useToast();
 
   const { mutate: saveWallet } = useMutation({
     mutationKey: ["wallet"],
@@ -41,6 +44,10 @@ const ModalAddWallet = () => {
       }
     },
     onSuccess: () => {
+      toast({
+        description: "created successfully",
+        variant: "success",
+      });
       queryClient.invalidateQueries({ queryKey: ["wallet"] });
     },
   });

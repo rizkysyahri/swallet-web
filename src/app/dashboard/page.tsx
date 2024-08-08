@@ -12,8 +12,9 @@ import {
 import axiosInstance from "@/lib/axios";
 import { formatPrice } from "@/lib/utils";
 import { useCounterStore } from "@/stores/zustand/store";
+import { IWalletDetail } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
-import { MessageSquareWarning, Wallet } from "lucide-react";
+import { Wallet } from "lucide-react";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -22,7 +23,7 @@ interface DashboardProps {}
 const Dashboard: FC<DashboardProps> = ({}) => {
   const token = useCounterStore((state) => state.token);
 
-  const { data: dataWallet, isLoading } = useQuery({
+  const { data: dataWallet, isLoading } = useQuery<IWalletDetail[]>({
     queryKey: ["wallet"],
     queryFn: async () => {
       const res = await axiosInstance.get("/wallet-settings", {
@@ -47,7 +48,7 @@ const Dashboard: FC<DashboardProps> = ({}) => {
             <h1 className="font-bold text-2xl text-gray-600">Dompet</h1>
             <div className="mt-5 flex flex-col sm:flex-row gap-5">
               {dataWallet && dataWallet.length > 0 ? (
-                dataWallet.map((wallet: any) => (
+                dataWallet.map((wallet) => (
                   <Link
                     key={wallet.id}
                     href={`/wallet/${wallet.id}/transaction`}
