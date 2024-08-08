@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  // baseURL: "https://swallet-backend-production.up.railway.app",
-  baseURL: "http://localhost:4000"
+  baseURL: "https://swallet-backend-production.up.railway.app",
 });
 
 export default axiosInstance;
