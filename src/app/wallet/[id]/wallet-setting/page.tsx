@@ -1,20 +1,17 @@
 "use client";
 
+import * as React from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ModalDeleteWallet from "@/components/modal/modalWallet/ModalDeleteWallet";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast";
 import useDeleteWallet from "@/hooks/api/wallet/useDeleteWallet";
 import useUpdateWallet from "@/hooks/api/wallet/useUpdateWallet";
 import axiosInstance from "@/lib/axios";
-import { useCounterStore } from "@/stores/zustand/store";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { IWalletDetail } from "@/types/types";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { DollarSign, Wallet } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 
 const Page = () => {
   const params = useParams();
@@ -50,7 +47,7 @@ const Page = () => {
     },
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (walletSetting) {
       setFormWallet({
         walletName: walletSetting.walletName || "",
@@ -64,17 +61,19 @@ const Page = () => {
       <MaxWidthWrapper className=" lg:grid lg:grid-cols-3 lg:gap-x-0 xl:gap-x-8">
         <div className="col-span-2 px-6 lg:px-0 lg:pt-4 ">
           <div className="relative mx-auto flex flex-col">
-            <div className="bg-black rounded-md w-[167px] ">
-              <Button
-                variant="neu"
-                onClick={() =>
-                  router.push(
-                    `/wallet/${walletSetting?.id}/wallet-setting/categories`
-                  )
-                }
-              >
-                Pengaturan Kategori
-              </Button>
+            <div className="bg-black rounded-md w-[167px]">
+              <div>
+                <Button
+                  variant="neu"
+                  onClick={() =>
+                    router.push(
+                      `/wallet/${walletSetting?.id}/wallet-setting/categories`
+                    )
+                  }
+                >
+                  Pengaturan Kategori
+                </Button>
+              </div>
             </div>
             <h1 className="text-gray-600 text-2xl font-bold pt-10">
               Pengaturan utama
