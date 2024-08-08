@@ -24,7 +24,11 @@ const useUpdateTransaction = () => {
   const { data: categories } = useQuery<ICategory[]>({
     queryKey: ["categories"],
     queryFn: async () => {
-      const response = await axiosInstance.get("/category");
+      const response = await axiosInstance.get("/category", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return response.data;
     },
   });
@@ -56,6 +60,7 @@ const useUpdateTransaction = () => {
   });
 
   const handleChangeLabel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("Label changed:", e.target.value);
     setFormTransaction({
       ...formTransaction,
       [e.target.name]: e.target.value,
@@ -63,6 +68,7 @@ const useUpdateTransaction = () => {
   };
 
   const handleSelectCategory = (categoryId: string) => {
+    console.log("Category selected:", categoryId);
     setFormTransaction({
       ...formTransaction,
       categoryId: categoryId,
@@ -71,6 +77,7 @@ const useUpdateTransaction = () => {
 
   const handleChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
     let { name, value } = e.target;
+    console.log("Amount changed:", value);
 
     if (!isNaN(parseFloat(value))) {
       value = parseFloat(value) < 0 ? value : "-" + Math.abs(parseFloat(value));

@@ -6,6 +6,7 @@ import Navbar from "@/components/header/Navbar";
 import { Toaster } from "@/components/ui/toaster";
 import { MessageSquareWarning } from "lucide-react";
 import AllertButton from "@/components/AllertButton";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
             </div>
           </main>
           <Toaster />
+          <Footer />
         </div>
       </body>
     </html>

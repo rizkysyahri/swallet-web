@@ -2,18 +2,8 @@
 
 import * as React from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { CardStackDemo } from "@/components/CardStackDemo";
 import { WobbleCardDemo } from "@/components/WobbleCardDemo";
-import {
-  BarChart2,
-  Clock,
-  Shield,
-  SlidersVertical,
-  Wallet,
-  LineChart,
-  CookingPot,
-} from "lucide-react";
-import Footer from "@/components/Footer";
+import { BarChart2, Clock, SlidersVertical } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -45,14 +35,6 @@ export default function Home() {
             </div>
 
             <div className="col-span-full lg:col-span-5 w-full mt-32 lg:mx-0 lg:mt-20 h-full border-2 border-solid border-black ">
-              {/* <div>
-                <div className="bg-[#508D4E] -translate-x-60 rotate-45 rounded-full p-5">
-                  <Wallet className="w-12 h-12" />
-                </div>
-                <div className="bg-[#987D9A] translate-x-56 md:translate-x-64 translate-y-20 rotate-12 rounded-full p-5 ">
-                  <LineChart className="w-12 h-12" />
-                </div>
-              </div> */}
               <div className="grid grid-cols-2 w-full h-[400px] lg:h-full">
                 <div className="bg-black">
                   <div className="flex items-center justify-end w-full h-full -translate-x-1 -translate-y-1 bg-[#80AF81] hover:translate-x-0 hover:translate-y-0 transition-all duration-300">
@@ -175,8 +157,6 @@ export default function Home() {
           </MaxWidthWrapper>
         </section>
       </div>
-
-      <Footer />
     </>
   );
 }

@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Recharts } from "@/components/chart/Rechart";
-import { BarChartCategory } from "@/components/chart/BarChartCategory";
 
 const Page = () => {
   const params = useParams();
