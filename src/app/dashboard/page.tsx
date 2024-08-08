@@ -55,7 +55,7 @@ const Dashboard: FC<DashboardProps> = ({}) => {
           <div className="flex flex-col ">
             <h1 className="font-bold text-2xl text-gray-600">Dompet</h1>
             <div className="mt-5 flex flex-col sm:flex-row gap-5">
-              {dataWallet?.map((wallet) => (
+              {dataWallet.map((wallet) => (
                 <Link
                   key={wallet.id}
                   href={`/wallet/${wallet.id}/transaction`}
