@@ -103,9 +103,10 @@ const Account = () => {
             <Input disabled name="email" value={profile?.user?.email} />
           </div>
         </div>
-        <div className="mt-10">
+        <div className="bg-black rounded-md mt-10 w-[120px]">
           <Button
             variant="secondary"
+            className="border-2 border-black -translate-x-1 -translate-y-1 hover:translate-x-0 hover:translate-y-0 transition duration-200"
             disabled={!isDirty}
             onClick={() => saveProfileUpdate(formProfile)}
           >

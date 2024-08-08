@@ -1,6 +1,9 @@
+'use client'
+
 import * as React from "react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -60,9 +63,11 @@ const ModalAddWallet = () => {
 
   return (
     <Dialog>
-      <DialogTrigger className="flex gap-2 w-60 items-center bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 rounded-md">
-        <Plus />
-        Add Wallet
+      <DialogTrigger className="bg-black w-60 h-9">
+        <div className="flex gap-2 w-60 items-center bg-secondary text-secondary-foreground h-9 px-4 py-2 border-2 border-black -translate-x-1 -translate-y-1 hover:translate-x-0 hover:translate-y-0 transition duration-200">
+          <Plus />
+          Add Wallet
+        </div>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -88,14 +93,15 @@ const ModalAddWallet = () => {
                 />
               </div>
             </div>
-
-            <div className="flex items-center justify-end pt-5">
-              <Button onClick={() => saveWallet(inputWallet)}>
-                Add wallet
-              </Button>
-            </div>
           </DialogDescription>
         </DialogHeader>
+        <DialogClose className="flex items-center justify-end">
+          <div className="bg-black w-[107px] rounded-md">
+            <Button onClick={() => saveWallet(inputWallet)} variant="neu">
+              Add wallet
+            </Button>
+          </div>
+        </DialogClose>
       </DialogContent>
     </Dialog>
   );

@@ -73,7 +73,7 @@ export function LineChartHero() {
         Expenses completed
       </h3>
       <LineChart
-        className="h-80"
+        className="h-80 border-2 border-solid border-black"
         data={chartdata}
         index="date"
         categories={["Wallet", "Expenses"]}

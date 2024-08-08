@@ -1,19 +1,21 @@
 "use client";
 
-import React, { useEffect } from "react";
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import React, { useEffect, useState } from "react";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 import Link from "next/link";
 import { useCounterStore } from "@/stores/zustand/store";
 import { usePathname, useRouter } from "next/navigation";
 import axiosInstance from "@/lib/axios";
-import { buttonVariants } from "./ui/button";
+import { buttonVariants } from "../ui/button";
 import NavbarUser from "./NavbarUser";
 import useWallet from "@/hooks/api/wallet/useWallet";
 import Image from "next/image";
+import HamburgerNav from "./HamburgerNav";
 
 const Navbar = () => {
   const user = useCounterStore((state) => state.user);
   const login = useCounterStore((state) => state.login);
+  const [open, setOpen] = useState(false);
   const { wallet } = useWallet();
   const pathname = usePathname();
   const router = useRouter();
@@ -49,35 +51,56 @@ const Navbar = () => {
 
   if (isLoginPage || isSignUpPage) return null;
 
+  const sheetMenu = () => {
+    setOpen(!open);
+  };
+
   return (
     <>
-      <nav className="sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
+      <nav className="sticky z-[100] h-14 inset-x-0 top-0 w-full border-b-2 border-black bg-white/75 backdrop-blur-lg transition-all ">
         <MaxWidthWrapper>
           <div className="flex items-center justify-between border-zinc-200 p-2">
             {user ? (
               <>
                 <Link href="/dashboard">
-                  <Image src="/swallet.png" alt="swallet" width={80} height={80}/>
+                  <Image
+                    src="/swallet.png"
+                    alt="swallet"
+                    width={80}
+                    height={80}
+                  />
                 </Link>
               </>
             ) : (
               <>
                 <div>
-                  <Image src="/swallet.png" alt="swallet" width={80} height={80}  />
+                  <Image
+                    src="/swallet.png"
+                    alt="swallet"
+                    width={80}
+                    height={80}
+                  />
                 </div>
               </>
             )}
 
             {user && !isDashboradPage && !isProfilPage && (
-              <div>
-                <ul className="flex justify-center items-center gap-5">
-                  <Link href={`/wallet/${wallet?.id}/transaction`}>
-                    Transaction
-                  </Link>
-                  <Link href={`/wallet/${wallet?.id}/review`}>Review</Link>
-                  <Link href={`/wallet/${wallet?.id}/wallet-setting`}>Wallet Settings</Link>
-                </ul>
-              </div>
+              <>
+                <div className="block md:hidden">
+                  <HamburgerNav onclick={sheetMenu} />
+                </div>
+                <div className="md:block hidden">
+                  <ul className="flex justify-center items-center gap-5">
+                    <Link href={`/wallet/${wallet?.id}/transaction`}>
+                      Transaction
+                    </Link>
+                    <Link href={`/wallet/${wallet?.id}/review`}>Review</Link>
+                    <Link href={`/wallet/${wallet?.id}/wallet-setting`}>
+                      Wallet Settings
+                    </Link>
+                  </ul>
+                </div>
+              </>
             )}
 
             <div className="flex h-full items-center space-x-4">
@@ -87,25 +110,17 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link
-                    className={buttonVariants({
-                      size: "sm",
-                      variant: "ghost",
-                    })}
-                    href="/login"
-                  >
-                    Login
+                  <Link className="rounded-md bg-black" href="/login">
+                    <span className="flex items-center -translate-x-1 -translate-y-1 rounded-md border-2 border-black bg-white h-8 px-4 py-2 active:translate-x-0 active:translate-y-0 transition-all duration-200">
+                      Login
+                    </span>
                   </Link>
                   <div className="h-8 w-px bg-zinc-200 hidden md:block" />
 
-                  <Link
-                    className={buttonVariants({
-                      size: "sm",
-                      variant: "ghost",
-                    })}
-                    href="/signup"
-                  >
-                    Sign up
+                  <Link className="rounded-md bg-black" href="/signup">
+                    <span className="flex items-center -translate-x-1 -translate-y-1 rounded-md border-2 border-black bg-white h-8 px-4 py-2 active:translate-x-0 active:translate-y-0 transition-all duration-200">
+                      Sign up
+                    </span>
                   </Link>
                 </>
               )}

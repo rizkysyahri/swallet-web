@@ -18,7 +18,13 @@ const SignUp = () => {
         <div className="flex flex-col mb-10">
           <div className="flex items-center justify-center">
             <Link href="/">
-              <Image src="/swallet.png" alt="swallet" className=" w-40" />
+              <Image
+                src="/swallet.png"
+                alt="swallet"
+                className=" w-40"
+                width={500}
+                height={500}
+              />
             </Link>
           </div>
           <h1 className="mt-5 text-2xl font-semibold">Create 🫵 account</h1>
@@ -58,9 +64,11 @@ const SignUp = () => {
               className="w-full"
             />
           </div>
-          <Button className="mt-5 w-full" type="submit" disabled={!isDirty}>
-            Create your account
-          </Button>
+          <div className="mt-5 rounded-md bg-black">
+            <Button className="w-full" variant="neu" type="submit" disabled={!isDirty}>
+              Create your account
+            </Button>
+          </div>
         </form>
         <div className="flex items-center justify-center mt-10">
           Already have an account ?{" "}

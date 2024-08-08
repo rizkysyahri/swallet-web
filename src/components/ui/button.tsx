@@ -18,14 +18,18 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-primary underline-offset-4 hover:underline hover:decoration-2",
         blur: "bg-[#2d95f0] text-primary-foreground shadow",
+        neu: "border-2 border-black -translate-x-1 -translate-y-1 bg-white hover:translate-x-0 hover:translate-y-0 transition-all duration-200",
+        neuWhite: "bg-black border-2 border-black -translate-x-1 -translate-y-1 text-primary-foreground hover:translate-x-0 hover:translate-y-0 transition-all duration-200",
+
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
+        defaultNeu: "h-8 px-4 py-2",
       },
     },
     defaultVariants: {

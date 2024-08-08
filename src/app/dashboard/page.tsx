@@ -12,7 +12,6 @@ import {
 import axiosInstance from "@/lib/axios";
 import { formatPrice } from "@/lib/utils";
 import { useCounterStore } from "@/stores/zustand/store";
-import { IWalletDetail } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
 import { MessageSquareWarning, Wallet } from "lucide-react";
 import Link from "next/link";
@@ -23,7 +22,7 @@ interface DashboardProps {}
 const Dashboard: FC<DashboardProps> = ({}) => {
   const token = useCounterStore((state) => state.token);
 
-  const { data, isLoading, isError } = useQuery<IWalletDetail[]>({
+  const { data: dataWallet, isLoading } = useQuery({
     queryKey: ["wallet"],
     queryFn: async () => {
       const res = await axiosInstance.get("/wallet-settings", {
@@ -32,16 +31,12 @@ const Dashboard: FC<DashboardProps> = ({}) => {
         },
       });
 
-      return res.data;
+      return res.data.data;
     },
   });
 
   if (isLoading) {
     return <div>Loading...</div>;
-  }
-
-  if (isError || !Array.isArray(data)) {
-    return <div>Error loading wallets</div>;
   }
 
   return (
@@ -51,36 +46,39 @@ const Dashboard: FC<DashboardProps> = ({}) => {
           <div className="flex flex-col ">
             <h1 className="font-bold text-2xl text-gray-600">Dompet</h1>
             <div className="mt-5 flex flex-col sm:flex-row gap-5">
-              {data.map((wallet) => (
-                <Link key={wallet.id} href={`/wallet/${wallet.id}/transaction`}>
-                  <Card className="w-full bg-[#ebfdef] border-none shadow-lg">
-                    <CardHeader>
-                      <div className="flex gap-3">
-                        <Wallet className="w-10 h-10" />
-                        <div className="flex flex-col">
-                          <CardTitle>{wallet.walletName}</CardTitle>
-                          <CardDescription>Tunai</CardDescription>
+              {Array.isArray(dataWallet) && dataWallet.length > 0 ? (
+                dataWallet.map((wallet) => (
+                  <Link
+                    key={wallet.id}
+                    href={`/wallet/${wallet.id}/transaction`}
+                    className="bg-black rounded-2xl"
+                  >
+                    <Card className="w-full bg-[#ebfdef] border-2 border-black translate-x-0 translate-y-0 hover:-translate-x-1 hover:-translate-y-1 transition duration-200">
+                      <CardHeader>
+                        <div className="flex gap-3">
+                          <Wallet className="w-10 h-10" />
+                          <div className="flex flex-col">
+                            <CardTitle>{wallet.walletName}</CardTitle>
+                            <CardDescription>Tunai</CardDescription>
+                          </div>
                         </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <span className="font-bold text-green-500 text-3xl">
-                        + {formatPrice(wallet.beginning_balance)}
-                      </span>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-              <ModalAddWallet />
+                      </CardHeader>
+                      <CardContent>
+                        <span className="font-bold text-green-500 text-3xl">
+                          + {formatPrice(wallet.beginning_balance)}
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))
+              ) : (
+                <div>No wallet data available</div>
+              )}
+              <div>
+                <ModalAddWallet />
+              </div>
             </div>
           </div>
-
-          {/* <section className="pt-14">
-            <div className="flex flex-col md:grid md:grid-cols-2 items-center gap-6">
-              <AreaChartHero />
-              <BarListHero />
-            </div>
-          </section> */}
         </MaxWidthWrapper>
       </section>
     </>
