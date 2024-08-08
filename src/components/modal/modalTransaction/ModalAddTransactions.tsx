@@ -208,10 +208,14 @@ const ModalAddTransactions: React.FC<ModalAddTransactionsProps> = ({}) => {
                     </Button>
                   </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 </DialogClose>
 =======
                   </DialogClose>
 >>>>>>> e095ed5bfb8220f02975b518c6a34a25a55a4d47
+=======
+                  </DialogClose>
+>>>>>>> 7f5208c0f1f4db07ef95e5ee06fc62414b9a4e7a
               </div>
             </div>
           </DialogDescription>
