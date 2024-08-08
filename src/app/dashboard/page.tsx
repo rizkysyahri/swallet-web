@@ -46,8 +46,8 @@ const Dashboard: FC<DashboardProps> = ({}) => {
           <div className="flex flex-col ">
             <h1 className="font-bold text-2xl text-gray-600">Dompet</h1>
             <div className="mt-5 flex flex-col sm:flex-row gap-5">
-              {Array.isArray(dataWallet) && dataWallet.length > 0 ? (
-                dataWallet.map((wallet) => (
+              {dataWallet && dataWallet.length > 0 ? (
+                dataWallet.map((wallet: any) => (
                   <Link
                     key={wallet.id}
                     href={`/wallet/${wallet.id}/transaction`}
@@ -72,7 +72,7 @@ const Dashboard: FC<DashboardProps> = ({}) => {
                   </Link>
                 ))
               ) : (
-                <div>No wallet data available</div>
+                <span>No wallet data available</span>
               )}
               <div>
                 <ModalAddWallet />
