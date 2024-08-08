@@ -13,7 +13,7 @@ import axiosInstance from "@/lib/axios";
 import { formatPrice } from "@/lib/utils";
 import { useCounterStore } from "@/stores/zustand/store";
 import { useQuery } from "@tanstack/react-query";
-import { Wallet } from "lucide-react";
+import { MessageSquareWarning, Wallet } from "lucide-react";
 import Link from "next/link";
 import { FC } from "react";
 
